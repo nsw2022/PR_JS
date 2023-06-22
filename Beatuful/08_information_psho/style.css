@@ -31,6 +31,18 @@ a{color:#ccc; text-decoration: none;}
 .information_box ol li p{visibility: hidden; line-height: 2;}
 .information_box ol li.on p{padding: 30px 100px; background: #eee; visibility: visible;transition: 0.3s;}
 
+/* 따라다니는 애 설정 */
+#smart{
+  width: 250px;
+  top: 50px;
+  right: 100px;
+  position: fixed;
+  background-color: red;
+}
+
+/* 따라다니는 애 끝 */
+
+
 /* 매매계약 이미지 출력 시작 */
 .on_show_img2-1,
 .on_show_img2-2,
