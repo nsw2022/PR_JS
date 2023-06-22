@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	<a href="javascript:kakaoLogin();"><img src="https://papaspick.com/web/upload/2019_web/icon/kakao_login.jpg" alt="옴?"></a>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script>
+		//d36bf6de908cead58cb95fb8ab0395a8
+		function kakaoLogin(){
+			Kakao.init('d36bf6de908cead58cb95fb8ab0395a8');
+			Kakao.Auth.login({
+				scope : 'profile_nickname, account_email',
+				success: function(authObj){
+					console.log(authObj)
+					Kakao.API.request({
+						url: '/v2/user/me', // 사용자 정보
+						success: function(res) {
+							const kakao_account = res.kakao_account; // 오타 수정
+							console.log(kakao_account);
+						}
+					})
+				}
+			})
+		}
+        // 정상작동함.... 왜 파이썬에서는 왜 안되는지 알아볼 필요가 있음...
+	</script>
+    
+</body>
+</html>
