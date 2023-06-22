@@ -28,9 +28,10 @@
     <div id="smart">
         <div id="smart_j">
             <h4>똑똑하게 집 구하기</h4>
+            <h4 class="smart_toggle">닫기</h4>
             <div class="smart_top_a">
-                <a href="./samart/info_smart_mama.html" target="smart">매매</a>
-                <a href="./samart/info_smart_jansa.html" target="smart">전월세</a>
+                <a href="./samart/info_smart_mama.html" target="smart">매매</a>|
+                <a href="./samart/info_smart_jansa.html" target="smart">전월세</a>|
                 <a href="./samart/info_smart_blue.html" target="smart">청약</a>
             </div>
         </div>
@@ -39,6 +40,27 @@
                 name="smart"></iframe>
         </div>
     </div>
+    
+    <script>
+        // 토글테스트
+        $(function(){
+            // 닫기클릭하면
+            $('.smart_toggle').click(function(){
+                $('.smart_section').toggle().css('transition','0.3s')
+                $('.smart_top_a').toggle()
+                // $(this가 함수 연 주체 지금은 smart_toggle )
+                // 3항 연산자로 제어 
+                // smart_toggle 글씨가 열기인가요? -> 닫기
+                // smart_toggle 글씨가 닫기인가요? -> 열기
+                // 이미지로 하는게 나을지도..
+                var text = $(this).text()
+                $(this).text(text === '열기' ? '닫기' : '열기');
+                
+            })
+        })
+       
+        
+    </script>
 </body>
 
 </html>
