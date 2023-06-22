@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Element Control</title>
+
+        <script>
+            function cal(){
+                var in1= document.getElementById("in1");
+                var in2= document.getElementById("in2");
+
+                var a= in1.value;
+                var b= in2.value;
+
+                var c= a+b; // string + string
+                c= parseInt(a) + parseInt(b);
+
+                var result= document.getElementById('result');
+                
+                result.value= c;
+            }
+
+            function changeColor(){
+                var e = document.getElementById("aa");
+                e.style.color="red";
+                e.style.backgroundColor="yellow";
+                e.style.border="2px solid blue";
+            }
+
+            function changeImage(){
+                var es= document.getElementsByTagName("img"); // 여러개일수도 있기에 배열로 리턴함
+                es[0].src= "./notebook.png"
+            }
+        </script>
+
+    </head>
+    <body>
+        
+        <!-- 두수를 입력받아 계산해주는 화면 -->
+        <input type="text" id="in1"><br>
+        <input type="text" id="in2"><br>
+        <button onclick="cal()">계산</button><br>
+        <input type="text" size="30" id="result">
+
+        <hr>
+
+        <!-- HTML 요소의 특정 스타일 변경 -->
+        <h2 id="aa">This is Heading</h2>
+        <button onclick="changeColor()">change background color of h2</button>
+
+        <hr>
+
+        <!-- 이미지 변경 -->
+        <img src="./computer.png" alt="computer" width="30%">
+        <button onclick="changeImage()">change image</button>
+
+        <hr>
+
+        <!-- HTML 요소와 script 요소 사용이 복합적으로 사용될 수 있음. -->
+        <table border="1" style="text-align: center;">
+            <tr>
+                <td>aaaaaaa</td>
+            </tr>
+
+            <script>
+                // 이 영역은 JS 문법체계 영역
+                for(var i=0; i<10; i++){
+                    document.write('<tr><td>'+ i +'</td></tr>');
+                }
+            </script>
+
+        </table>
+
+    </body>
+</html>

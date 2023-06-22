@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WEB GAME</title>
+
+        <script>
+
+            //전역변수로 이미지객체 생성
+            var imgPlayer= new Image()
+            imgPlayer.src= "../images/ms19.png"
+
+            var x= 200, y=250  //이미지의 중심좌표  [화면에 정가운데 좌표]
+            var w= 40, h=40;   //이미지의 절반너비, 절반높이
+
+            var dx= 1, dy= 1;  //플레이어 이동 [방향/속도]
+
+            //배경이미지
+            var imgBack= new Image()
+            imgBack.src= "../images/bg.png"          
+
+            function loaded(){
+                canvas= document.getElementById('c1')
+                context= canvas.getContext('2d')
+
+                runGame();
+                // 10ms 마다 runGame() 다시 호출.
+                window.setInterval( runGame , 10)
+            }
+
+            function runGame(){
+                moveAll();//캐릭터들 움직이는 기능
+                drawAll();//화면을 그려내는 기능
+            }
+
+            // 화면에 보이는 모든 움직이는 것들은 여기서 작업
+            function moveAll(){
+                x+= dx;
+                y+= dy;
+
+                if( x<w || x>400-w ) dx= -dx
+                if( y<h || y>500-h ) dy= -dy
+            }
+
+            // 화면에 보이는 모든 것들을 그려내는 작업
+            function drawAll(){
+                //배경 그리기
+                context.drawImage(imgBack, 0, 0, 400, 500)
+
+                //플레이어 그리기
+                context.drawImage(imgPlayer, x-w, y-h, w*2, h*2)
+            }
+
+            //키보드의 방향키 입력 이벤트 처리
+            function keyDown(){
+                keycode= event.keyCode;
+                switch(keycode){
+                    case 37:  if( x<w || x>400-w ){
+                        dx=0
+                    }else{
+                        dx=-1
+                    }; break;  //LEFT
+
+                    case 38:  if(  y<h || y>500-h ){
+                        dy=0
+                    }else{
+                        dy=-1
+                    }; break;  //UP
+
+                    case 39:  if( x<w || x>400-w ){
+                        dx=0
+                    }else{
+                        dx=1
+                    }; break;   //RIGHT
+                    
+                    case 40:  if(  y<h || y>500-h ){
+                        dy=0
+                    }else{
+                        dy=1
+                    }; break;   //DOWN
+                    
+                    default: dx=1; dy=1;     // AUTO
+                }
+            }
+
+            function keyUp(){
+                keycode= event.keyCode;
+                if(keycode>=37 && keycode<=40){
+                    dx=0; dy=0;
+                }
+            }
+
+        </script>
+
+    </head>
+    <body onload="loaded()" onkeydown="keyDown()" onkeyup="keyUp()">
+        <canvas id="c1" width="400" height="500" style="border:2px solid black"></canvas>
+        
+    </body>
+</html>

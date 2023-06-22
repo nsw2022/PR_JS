@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Date object</title>
+    <script>
+
+        // JS의 유용한 내장 생성자 함수들 [Date, Number, String, Math, Array]
+
+        // 1. Date
+        var a = new Date();
+        document.write(a+"<br>");//객체 참조변수를 출력하면 자동 .toString() 발동
+        document.write(typeof(a) + "<br>");
+
+        //주요 기능 메소드
+        //주요기능 메소들
+        document.write( a.toDateString() +"<br>" );
+        document.write( a.toLocaleString() +"<br>" );
+        document.write( a.getYear() +"<br>" ); //1900년부터 기준..
+        document.write( a.getFullYear() +"<br>" ); //2022
+        document.write( a.getMonth() +"<br>" ); //0~11
+        document.write( a.getDate() +"<br>" );
+        document.write( a.getHours() +"<br>" );
+        document.write( a.getMinutes() +"<br>" );
+        document.write( a.getSeconds() +"<br>" );
+        document.write( a.getTime() +"<br>" );//1970년 1월 1일 09:00:00 부터 1ms 마다 1씩 증가된 수
+        document.write("<hr>")
+        
+        //set도 가능함
+        var b = new Date();
+        document.write(b.toLocaleString()+"<br>");
+        b.setFullYear(2018);
+        document.write(b.toLocaleString()+"<br>");
+
+        //객체를 생성하면서 생성자 함수 파라미터로 날짜를 지정할 수 있음
+        var c = new Date(2025,7,20);//2025년 8월 20일
+        document.write(c.toLocaleString()+"<br>");
+        
+        c=new Date("Wed Sep 13 2017 13:40:13 GMT+0900");
+        document.write(c.toLocaleString()+"<br>");
+
+        c=new Date("2017. 9. 13");
+        document.write(c.toLocaleString()+"<br>");
+
+        c=new Date(0); //1970년을 기준으로 1ms마다 증가된 수를 시간 설정
+        document.write(c.toLocaleString()+"<br>");
+
+        // 두 날짜 사이의 비교
+        var a=new Date("2023.03.16");
+        var b=new Date();
+
+        var diff= b.getTime() - a.getTime();//밀리초 계산
+        document.write("두 날짜 차이 : "+diff+"<br>");
+
+        //밀리초 --> 몇 일로 변환
+
+        var sec=diff/1000;  //ms->s
+        var min=sec/60;     //s-->m
+        var hour=min/60;    //m-->h
+        var day=hour/24;    //h-->d
+        
+        //소수점 제거
+        day=Math.floor(day);
+        document.write("두 날짜 일수차이 : "+day+"일<br>");
+        
+    </script>
+</head>
+<body>
+    <hr>
+
+        <input type="date" id="ss">
+        <button onclick="clickBtn()">기준일 입력</button>
+
+        <script>
+            function clickBtn(){
+                var e = document.getElementById('ss');
+                document.write(e.value+"<br>");
+
+                var a= new Date(e.value);//기준일
+                var b= new Date();       //오늘
+
+                //var diff= b.getTime() - a.getTime();
+                var diff = b-a;// 자동 getTime으로 계산함
+                var day= diff/(1000*60*60*24);
+                day=Math.floor(day);
+
+                if(day>0) document.write("오늘로부터 "+day+"일 전 <br>");
+                else if(day<0) document.write("오늘로부터 "+(-day)+"일 후 <br>");
+                else document.write("오늘<br>");
+            }
+        </script>
+</body>
+</html>

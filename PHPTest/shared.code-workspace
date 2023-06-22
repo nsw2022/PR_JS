@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "C:/Users/nsw/Desktop/shared"
+		},
+		{
+			"path": "D:/WEB"
+		},
+		{
+			"path": "../../BackEnd_hakwon"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "WEB"
+	}
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS Math object</title>
+
+    <script>
+
+        //4. Math - 수학연산을 위한 생성자함수
+        // ## new 키워드로 객체 생성없이 곧바로 기능 사용할 수 있음 ##
+        
+        var n = 3.14
+        document.write(Math.floor(n) + "<br>")//반올림없이 소수점 제거
+        document.write(Math.round(n) + "<br>")//반올림
+        document.write(Math.ceil(n) + "<br>")//무조건 올림
+
+        // 랜덤값 얻기
+        var r=Math.random() //0.0~1.0
+        document.write(r+"<br>")
+
+        //0~9까지를 원한다면
+        var r=Math.random() * 10
+        r=Math.floor(r)
+        document.write(r+"<br>")
+
+        var r = Math.floor(Math.random()*15)//0~14
+        document.write(r+"<br>")
+
+        // 이 외에도 제곰,제곱근,코사인 같은 수학적 계산기능들도 많이 있음
+
+    </script>
+</head>
+
+<body>
+    
+
+</body>
+</html>

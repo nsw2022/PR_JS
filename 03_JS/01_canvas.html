@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script>
+        function loaded(){
+            var canvas = document.getElementById('c1')
+
+            // canvas에 그림을 그려낼 도구(화가)객체 얻어오기
+            var context = canvas.getContext('2d')
+
+            // 글씨 스타일 지정
+            context.fillStyle="red"
+            context.font="20px cursive"//serif 명조체 기본은 산스셀이프체
+
+            // 화가 객체에게 글씨 그리기
+            context.fillText("Hello",10,40) // 글씨의 좌 하단 좌표
+            context.fillText("Hello",0,0)
+            context.fillText("Hello",0,10)
+            // context.fillText("Hello",0,400)
+
+            // 글씨를 윤곽선으로 그리기.
+            context.strokeStyle="blue"
+            context.strokeText("Hello",100,40) 
+
+            // 도형그리기.
+            context.fillStyle="green"
+            context.fillRect(10,50,100,40) // 사각형 좌상단 : 10, 50 너비:100 높이:40
+            context.fillStyle="green"
+            context.fillRect(120,50,100,40) 
+
+            //직선그리기
+            context.beginPath()// 선 경로작업 시작
+            context.moveTo(10, 100)// 선의 시작위치
+            context.lineTo(100, 150)
+            context.lineTo(150, 120)
+            context.stroke()// 선 그리기
+
+            //사각형, 곡선, 원, 도형, 그래디언트, 패턴.. 등 많은 모양그리기 가능
+
+            //이미지 그리기.
+            var img = new Image()
+            img.src = '../images/ms19.png'
+            img.onload=function(){//png-->Image객체 변환 로딩이 완료되면..
+                context.drawImage(img,10,180)//이미지 좌상단 좌표(원본사이즈)
+                context.drawImage(img,10,180,100,100) //이미지의 너비, 높이
+            }
+
+
+        }
+    </script>
+</head>
+<body onload="loaded()">
+    <canvas id="c1" width="300" height="400" style="border: 1px solid black;"></canvas>
+    
+</body>
+</html>

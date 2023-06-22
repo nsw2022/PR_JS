@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Exception</title>
+    <script>
+
+        // 예외처리! -- 에러가 발생햇을대 프로그램이 다운되지 않도록 하는 기법
+        document.write("예외처리 연습")
+
+        //aler('aa')// 여기서 에러 발생.. 하면 다음 줄 부터 코드가 실행되지 않음
+        try{
+            aler('aa')
+        }catch(e){
+            document.write("예외 발생 : "+e)
+        }
+        document.write("<br>프로그램 정상 종료.<br>")
+
+        //finally
+        try{
+            aler("aaa")
+        }catch(e){
+            document.write("예외발생<br>")
+        }finally{
+            document.write("예외가 있든 없든 무조건 실행되는 영역<br>")
+        }   
+        document.write("<br>프로그램 정상 종료.<br>")
+
+        // thow - 원래 예외상황이 아닌데 억지로 예외를 발동시키는 기법
+        try{
+            var a = 10
+            var b = 15
+
+            var c = a-b
+            if(c<0) throw "음수결과는 안됨.!"
+            // 부가설명하자면 에러아니여도 일부러 상황을 만듬
+            document.write("결과 : " + c + "<br>")
+        }catch(e){
+            document.write("예외 : "+ e +"<br>")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

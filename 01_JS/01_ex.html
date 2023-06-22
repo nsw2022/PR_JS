@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Test</title>
+
+        <!-- JavaScript의 core 문법 정식명칭 - ECMscript(에크마 스크립트) -->
+
+        <!-- 브라우저가 interprete(통역)해서 실행하는 프로그램 코드 (내부스크립트 적용)-->
+        <script>
+            // 이 영역안에서는 JavaScript의 문법 체계를 따르게됨 주석부터 다름
+
+            // Html에서 Body안에 했던 작업들 모두 스크립트로 처리 가능
+            // 화면에 Text 출력
+            document.write("Hello world!");
+
+            // 줄바꿈 자동 안됨.
+            document.write('자동 줄바꿈 안됨... 하려면.. <br>태그 이용');
+
+            document.write("<hr>");
+            // HTML 태그문법을 직접 스크립트 문자열로 작성하면 브라우저가 해독.
+            document.write("<a href=''>이런식으로 HTML요소 작성 가능</a>");
+
+            document.write("<hr>");
+
+            //자바스크립트는 프로그래밍 언어여서 변수, 객체, 연산자, 제어문 등이 있음
+            var a= 10;
+            document.write(a);
+            
+            var b= new Date();
+            document.write(b);
+            document.write("<br>");
+
+            for(var i=0;i<10;i++){
+                document.write(i+" , ");
+            }
+
+            // 웹문서의 이벤트 처리에도 사용됨
+            function aaa(){
+                //alert("clicked button");
+
+                // body 영역이 그려진 후 document. write()를 하면 화면이 갱신됨.
+                document.write("clicked button")
+
+                // HTML요소를 찾아와서 값 적용.
+                // var p = document.getElementById("p1");
+                p.innerHTML="clickd Button";
+            }
+
+            // 문자열 끝에 ; 이 없어도 됨.
+            document.write("aaa")
+            document.write("bbb")
+
+        </script>
+
+        <!-- 외부 스크립트 적용 -->
+        <script src="./01_ex.js" type="text/javascript"></script>
+
+    </head>
+
+    <body>
+        
+        <!-- Body영역은 무조건 Header영역 작업 후에 실행됨 -->
+        <hr>
+        Hello world
+
+        <p>
+            <button onclick="aaa()">button</button>
+        </p>
+
+        <p id="p1"></p>
+
+
+
+
+    </body>
+</html>

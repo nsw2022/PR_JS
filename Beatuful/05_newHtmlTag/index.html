@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신종 HTML 태그 리스트</title>
+    <style>
+        /* linear-gradient : 그라데이션 생성 */
+        /* https://developer.mozilla.org/ko/docs/Web/CSS/gradient/linear-gradient */
+        #details[open] {
+            background-color: #cdedfd;
+            background-image: linear-gradient(319deg,
+                    #cdedfd 0%,
+                    #ffec82 37%,
+                    #ffcfd2 100%);
+        }
+    </style>
+    <script>
+        function redirectToPage() {
+            var inputElement = document.getElementById("site-input");
+            var inputdata = inputElement.value;
+
+            let option = document.getElementById('site-option');
+            // "${}" <- 리터럴 템플릿이라 부름 
+            // 참고자료 https://eblee-repo.tistory.com/38
+            let selectedOption = option.querySelector(`option[value="${inputdata}"]`); // 선택된 옵션을 가져옴
+
+            if (selectedOption) {
+                let optiondata = selectedOption.getAttribute('data-url');
+                console.log(inputdata);
+                console.log(optiondata);
+                window.open(optiondata, "_blank"); // 올바른 URL을 가져와서 열도록 수정
+            } else {
+                alert("선택된 사이트가 없습니다.");
+            }
+        }
+        function testgogo() {
+            document.getElementById('testgogo')
+        }
+    </script>
+</head>
+
+<body>
+    <details id="details">
+        <summary>반찬이뭐야</summary>
+        <span>김치야</span>
+    </details>
+    <input type="week" name="week" id="week">
+    <input type="time" name="" id="">
+    <input type="month" name="" id="">
+    <input type="date" name="" id="">
+    <br>
+    <picture>
+        <!-- 사용자에 화면에 맞게 세팅 -->
+        <!-- http://www.tcpschool.com/html-tags/picture -->
+        <source srcset="../../images/ms19.png" media="(min-width:1200px)">
+        <source srcset="../../images/ms21.png" media="(min-width:900px)">
+        <source srcset="../../images/bg.png" media="(min-width:500px" )>
+        <img src="../../images/sky.jpg" alt="" srcset="">
+
+    </picture>
+    <br>
+    <!-- 쥐인짜 개꿀 검색기능 js없이 html로만 하는기능 -->
+    <!-- input 태그에 list속성datalist 태그의 id를 같게하여 제어 -->
+
+    <!--  여기가 원본 !! 아래는 테스트 영역 쇼핑몰이나 다른곳 처럼 버튼누르면 다른곳페이지로 연결하고싶은데 잘안됨
+    <label for="movie">당신이 좋아하는 영화는?</label>
+    <input type="text" list="movie-option">
+     <datalist id="movie-option">
+        <option value="아이언맨" />
+        <option value="앤드게임" />
+        <option value="존윅" />
+        <option value="안떠오르네뭐있으려나" />
+        <option value="마다가스카" />
+    </datalist>
+    <button>버튼</button> -->
+
+    <!-- GPT 알려준거 여러시행착오끝 완성 -->
+    <form>
+        <label for="site">가고싶은 사이트?</label>
+        <input type="text" id="site-input" list="site-option">
+        <datalist id="site-option">
+            <!-- 나름 html을 다뤄봣지만 처음보는 속성이 등장했다 data-url -->
+            <!-- 해당 속성은 html의 변수같은 느낌으로 사용할수있다 -->
+            <!-- 자세한 설명은 아래를 참고하자 -->
+            <!-- https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-HTML-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8Bdata-%EC%86%8D%EC%84%B1 -->
+            <option value="네이버" data-url="https://www.naver.com" ></option>
+            <option value="구글" data-url="https://www.google.com" ></option>
+            <option value="도메인" data-url="https://www.example.com" ></option>
+            <option value="챗지피티" data-url="https://chat.openai.com/" ></option>
+            <option value="애플" data-url="https://www.apple.com" ></option>
+        </datalist>
+        <button onclick="redirectToPage()">버튼</button>
+        <button type="reset">취소</button>
+    </form>
+    <br>
+    <br>
+    <!-- 스크립트써서 구현해봄 -->
+    <input type="text" name="" id="search" onkeyup="onSearch()">
+    <ul id="list">
+        <li>첫번째</li>
+        <li>두번째</li>
+        <li>세번째</li>
+        <li>네번째</li>
+        <li>다섯번째</li>
+    </ul>
+    <script>
+        const onSearch = () => {
+            let input = document.querySelector('#search');
+            let filter = input.value.toUpperCase();
+    
+            let list = document.querySelectorAll('#list li');
+    
+            list.forEach((el) => {
+                let text = el.textContent.toUpperCase();
+                // 참이면 보이고 아니면 상태를 숨김
+                el.style.display = text.includes(filter) ? "" : "none";
+            });
+        };
+    </script>
+    <br>
+    <select name="none" onchange="window.open(value,'_blank');">
+        <option value="none">------ 관련 사이트 ------</option>
+        <optgroup label="그룹001">
+            <option value="http://kosen21.org">코센(KOSEN)</option>
+            <option value="https://www.nkis.re.kr:4445">국가정책연구포털(NKIS)</option>
+            <option value="http://www.eaerweb.org">East Asian Economic Review</option>
+        </optgroup>
+        <optgroup label="그룹002">
+            <option value="http://www.kisti.re.kr">한국과학기술정보연구원</option>
+            <option value="http://www.nrc.re.kr">경제인문사회연구회</option>
+            <option value="http://www.kiep.go.kr">대외경제정책연구원</option>
+        </optgroup>
+        <option value="http://www.google.com">구글</option>
+        <option value="http://www.naver.com">네이버</option>
+        <option value="http://www.daum.net">다음</option>
+    </select>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Js Libray</title>
+
+    <!-- JQuery : JS를 편하게 만들어주는 라이브러리 적용 [jquery.com]-->
+    <!-- 방법1. js 파일 다운로드 방식 -->
+    <!-- <script src="./js/jquery-3.6.4.min.js"></script> -->
+
+    <!-- 방법2. CDN [ Content Delivery Network ] 방식 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        // onload 이벤트처리 함수를 JQuery 라이브러리를 이용하여 만들어보기
+        $(document).ready(function(){
+            // alert()
+
+            // JQuery 장점 : 요소제어 쉬움, 이벤트처리 간결, 애니메이션 적용 쉬움..
+
+            // HTML의 요소를 찾을때 CSS선택자 문법을 사용하여 수비게 선택할 수 있음.
+            $('#btn').click(function(){
+                alert('clicked')
+                $(this).hide()
+
+            })
+            // 이벤트 처리 3가지 방법
+            $('#b1').click(function(){ // 이벤트 명으로 된 메소드 호출
+                $('#h').hide()
+            })
+
+            $('#b2').bind('click',function(){// 이벤트와 콜백함수를 연결하는 메소드 호출
+                $('#h').show()
+            })
+
+            $('#b3').on('click dblclick',function(){// [권장]이벤트에 콜백함수를 지정하는 메소드 호출 - 이벤트 여러개를 동시에 처리 가능
+                $('#h').toggle()
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+    <button id="btn">버튼</button>
+    
+    <hr>
+    <!-- 이벤트 처리 3가지 방법 -->
+    <h3 id="h">클릭 이벤트 처리</h3>
+    <button id="b1">hide</button>
+    <button id="b2">show</button>
+    <button id="b3">toggle</button>
+
+    <!-- 다른 이벤트 연습 -->
+    <hr>
+    <input type="text">
+
+    <script>
+
+        $("input").focus(function(){
+            $(this).css("background-color",'yellow')//css스타일 적용
+        })
+
+        $('input').on('blur',function(){
+            $(this).css("background-color",'')
+        })
+
+    </script>
+
+    
+    <h2>anmation 처리</h2>
+    <button id="btn1">show</button>
+    <button id="btn2">hide</button>
+    <button id="btn3">fadeIn</button>
+    <button id="btn4">fadeOut</button>
+    <button id="btn5">slideUp</button>
+    <button id="btn6">slideDown</button>
+    <hr>
+    <img src="../images/ms19.png" alt="pig" width="150">
+    <script>
+        $('#btn1').click( function(){
+            $('img').show(3000) //3000ms 동안 animation적용되며 보여짐
+        } )
+        $('#btn2').click( function(){
+            $('img').hide(3000) //3000ms 동안 animation적용되며 작아짐
+        } )
+
+        $('#btn3').click( function(){
+            $('img').fadeIn('slow') //600ms 동안 animation적용되며 보여짐
+        } )
+        $('#btn4').click( function(){
+            $('img').fadeOut('slow') //600ms 동안 animation적용되며 작아짐
+        } )
+
+        $('#btn5').click( function(){
+            $('img').slideUp('fast') //200ms 동안 animation적용되며 보여짐
+        } )
+        $('#btn6').click( function(){
+            $('img').slideDown('fast') //200ms 동안 animation적용되며 작아짐
+        } )
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>form 요소</title>
+</head>
+
+<body>
+
+    <!-- form 요소 :  anchor 처럼 다른 문서를 실행하지만 데이터를 전달할 수 있고 이동 하기위해 별도의 input 요소가 필요함 -->
+
+    <!-- GET 방법 -->
+    <form action="./getTest.php" method="get">
+        <input type="text" name="title">
+        <input type="text" name="msg">
+
+        <input type="submit">
+    </form>
+
+    <br>
+    <hr>
+    <br>
+
+    <!-- POST 방법 -->
+    <form action="./postTest.php" method="post">
+        <fieldset>
+            <legend>POST Method TEST : 회원가입</legend>
+
+            <label for="in1">이름 : </label>
+            <input type="text" name="name" id="in1">
+            <br>
+
+            <label>비밀번호 : <input type="password" name="pw"></label><br>
+
+            <p>
+                성별 :
+                <label><input type="radio" name="gender" value="female" checked>여성</label>
+                <label><input type="radio" name="gender" value="male">남성</label>
+            </p>
+
+            <p>
+                당신이 좋아하는 과일(다중선택) :
+                <label><input type="checkbox" value="apple" name="fruits[]">사과</label>
+                <label><input type="checkbox" value="banana" name="fruits[]">바나나</label>
+                <label><input type="checkbox" value="orange" name="fruits[]">오렌지</label>
+            </p>
+
+            <p>
+                메세지 :
+                <textarea name="msg" cols="40" rows="5"></textarea>
+            </p>
+
+            <div>
+                당신의 차량 브랜드 :
+                <select name="car">
+                    <optgroup label="자동차 브랜드">
+                        <option value="현대">현대</option>
+                        <option value="기아">기아</option>
+                        <option value="쌍용">쌍용</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <hr>
+
+            <div>
+                <input type="submit" value="작성완료">
+                <input type="reset" value="취소">
+            </div>
+
+        </fieldset>
+    </form>
+
+    <br>
+    <hr>
+    <br>
+
+    <!-- 파일 전송 -->
+    <!-- form 요소를 이용하여 파일을 전송할때는 반드시 enctype 속성을 지정해야만 함. -->
+    <!-- enctype : 형식을 나타내는 것 키='value' 이게 applcatipn/x-ww.. 이게 디폴트값 그때 이걸쓰고 -->
+    <!-- 파일보낼땐 mltipart/form-data 로 보냄 http의 통신규약임 -->
+    <form action="./file.php" method="post" enctype="multipart/form-data">
+        <input type="file" accept="image/png" name="aaa">
+        <input type="submit" value="파일전송">
+    </form>
+
+    <hr>
+
+    <!-- 여러개의 파일 전송 -->
+    <form action="./file2.php" method="post" enctype="multipart/form-data">
+        <input type="file" multiple name="bbb[]">
+        <input type="submit" value="파일 여러개 전송">
+    </form>
+
+</body>
+
+</html>

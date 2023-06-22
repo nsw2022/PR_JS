@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Array</title>
+
+        <script>
+
+            //JS에서 배열의 2가지 생성 방법
+            //1. 리터럴 배열 
+            var arr=[10,20,30];
+            document.write(arr+"<br>"); //배열객체의 .toString()이 자동발동 (요소값들이 , 구분자로 하나의 문자열로 리턴됨)
+            document.write(arr[0] +"<br>");
+            document.write(arr[1] +"<br>");
+            document.write(arr[2] +"<br>");
+            
+            document.write("<br>");
+
+            //JS는 동적타입 언어 이기에 배열요소의 자료형들이 달라도 문제 없음.
+            var arr1=[10, "aaa", true];
+
+            document.write(arr1[0] +"<br>");
+            document.write(arr1[1] +"<br>");
+            document.write(arr1[2] +"<br>");
+
+            // 배열의 index가 틀려도 에러나지 않음.
+            document.write(arr1[3] +"<br>");//undefined
+            
+            document.write("<br>");
+
+            // 배열의 개수가 동적으로 변경될 수 있음.
+            document.write("배열길이 : "+arr1.length+"<br>");
+
+            arr1[5]=100;// 5번 index 요소에 값을 대입. 자동으로 사이에 3,4 방이 생김
+            document.write("배열길이 : "+arr1.length+"<br>");//6개
+            document.write(arr1[0] +"<br>");
+            document.write(arr1[1] +"<br>");
+            document.write(arr1[2] +"<br>");
+            document.write(arr1[3] +"<br>"); //undefined
+            document.write(arr1[4] +"<br>"); //undefined
+            document.write(arr1[5] +"<br>");
+
+            document.write("<br>");
+            
+
+            //2. Array 객체로 배열 생성
+            var arr2=new Array(10, "sam", 30);
+
+            //반목문으로 요소들값 출력
+            for(var i=0; i<arr2.length; i++){
+                document.write(arr[i] + " , ")
+            }
+            document.write("<br>");
+
+            // for each 문법 - in 연산자
+            for( var index in arr2 ){//요소가 얻어지지 않고 index 번호가 얻어짐
+                document.write( arr2[index] , " , ");
+            }
+
+            document.write("<hr>");
+
+            // 배열객체를 먼저 만들고 나중에 요소들을 추가할 수도 있음.
+            var arr3 = new Array();
+            arr3[0]="apple";
+            arr3[1]=20;
+            arr3[2]=new Date();
+
+            for(var i=0; i<arr.length;i++){
+                document.write(arr3[i] + "<br>")
+            }
+            document.write("<hr>");
+
+            // 연관배열 - 욧 구분 방번호 대신. 글씨로 요소에 접근
+            var arr4=new Array();
+            arr4['aa']=10;
+            arr4['bb']=20;
+            arr4['cc']=30;
+
+            document.write(arr4['aa'] + " , ");
+            document.write(arr4['bb'] + " , ");
+            document.write(arr4['cc'] + " , ");
+            document.write("<br>");
+            
+            //리터럴 배열도 연관배열 가능함
+            var arr5=[];
+            arr5['aa']=100;
+            arr5['bb']=200;
+            document.write(arr5['aa'] + " , ");
+            document.write(arr5['bb'] + " , ");
+            document.write("<br>");
+
+            // 연관배열을 만들면서 요소값 넣고 싶다면
+            var arr6={'aa':1000,'bb':2000};
+            document.write(arr6['aa'] + " , ");
+            document.write(arr6['bb'] + " , ");
+            document.write("<br>");
+
+            // JS에서 연관배열과 사용자정의 객체는 비슷한 표기문법
+            // 비슷한 만큼 실제 메모리 구조는 똑같기에 서로의 문법으로 요소접근 가능함
+            document.write(arr6.aa+"<br>");//마치 객체처럼 사용하는게 가능
+            document.write(arr6.bb+"<br>");
+
+
+        </script>
+    </head>
+
+    <body>
+        
+
+    </body>
+</html>

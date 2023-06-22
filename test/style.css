@@ -1,0 +1,29 @@
+/* common 스타일 */
+*{margin:0;padding:0;}
+#container{width:90%;margin:0 auto;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+h2{text-align:center;}
+
+/* navbar 스타일 */
+header{width:100%; height:100px; background:#0077cc;}
+#logo{float:left; width:30%; line-height: 100px}
+#logo h1{color:#fff;padding-left: 30px;}
+nav{float:right;width:70%; padding-top : 40px;}
+
+/* 주메뉴 */
+#topMenu{height:60px;}
+#topMenu li{float:left; position: relative;}
+#topMenu > li > a{display:block; padding:20px 50px; color:white;}
+#topMenu > li > a:hover{color:#444;}
+
+
+/* 부메뉴 */
+#topMenu > li > ul > li{ position: absolute; display:none;
+            width:140px; left : 10px; background: rgba(246, 248, 213, 0.6);}
+#topMenu > li:hover > ul > li{ display:block;}
+#topMenu > li > ul > li{ padding:10px 30px;}
+#topMenu > li > ul > li > a{font-size: 15px; color: #000;}
+
+/* main 스타일 */
+#main{clear: both; margin: 0 auto;}

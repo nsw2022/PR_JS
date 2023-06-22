@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS variable</title>
+
+        <!-- 내부 스크립트 적용 -->
+        <script>
+
+            // 자료형의 종류
+            //1. 수치형 : number  - 정수, 실수
+            //2. 문자형 : string  - 한문자, 문자열 : '',""
+            //3. 논리형 : boolean - true, false
+            //4. 객체형 : object, 내장, 함수, new 키워드
+            //5. undefined : 값이 없는 변수
+
+            // JS는 변수을 만들때 자료형이 결정되지 않고. 값이 대입되었을때 자료형 결정 - 동적타입 언어
+            var a;
+            a= 10;
+            document.write(a);
+            document.write('<br>');
+
+            var b="aaa";
+            document.write(b);
+            document.write('<br>');
+
+            var c=true;
+            document.write(c);
+            document.write('<br>');
+
+            // 위 까지가 기본타입
+
+            var d= new Date();
+            document.write(d); //참조하는 객체의 .toString()기능 자동 발동
+            document.write("<br>");
+
+            var e;
+            document.write(e); //  출력: undefined
+            document.write("<br>");
+
+            document.write("<hr>");
+
+            //변수의 자료형을 출력해보기
+            document.write( typeof(a) +"<br>" );
+            document.write( typeof(b) +"<br>" );
+            document.write( typeof(c) +"<br>" );
+            document.write( typeof(d) +"<br>" );
+            document.write( typeof(e) +"<br>" );
+
+            document.write("<br>");
+
+            //당연하게 ""안에 작성하면 문자열 타입
+            var f="1";
+            document.write( typeof(f) +"<br>" ); //string
+
+            document.write("<hr>");
+
+            // 변수에 값을 대입할때 자료형이 동적으로 결정되기에
+            // 가지고 있는 자료의 type이 변경되는 것도 OK
+            var g=10;
+            document.write(g);
+            document.write("<br>");
+
+            g="sam";
+            document.write(g);
+            document.write("<br>");
+
+            // 심지어 함수도 변수로 참조가 가능함
+            var h= function(){
+                document.write("hhhh" +"<br>");
+            }
+
+            //함수를 가지고 있는 변수의 이름을 통해 함수를 호출할 수 있음.
+            h();
+
+            document.write( typeof(h) +"<br>"); //function
+            document.write(h); //함수를 가진 변수값을 출력. -- 함수가 실행되지 않고 글씨들이 출력됨
+
+            document.write('<hr>');
+
+            // 문자열은 참조형 객체가 맞음
+            var s="Hello";
+            document.write( s.length );
+            document.write("<br>");
+
+            document.write( s.charAt(1)  );
+            document.write("<br>");
+
+            document.write( s.replace("H","K")  );
+            document.write("<br>");
+
+            document.write( s.replace("l","p") ); //한글자만 변경
+            document.write("<br>");
+
+            // 개발자가 만드는 객체형 - class 라는 문법이 없음. [ECMAscript5 버전에 등장]
+            var person = {name:"sam",age:20};
+
+            document.write(person.name + " : ");
+            document.write(person.age + " <br> ");
+
+            // 변수사용의 특이한 점.
+            // 같은 이름을 가진 변수의 선언을 해도 에러 아님.
+            var m=100;
+            var m=200; // 같은 이름의 변수를 또 선언하면 var 키워드를 무시함
+
+            document.write(m);
+            document.write("<br>");
+
+            //수치형 값 표기법
+            var n=3.14;
+            document.write(n);
+            document.write('<br>');
+
+            n= 1.234e3; //1.234 * 10^3 : 지수표기법
+            document.write(n)
+            document.write('<br>');
+
+            n=1.234e-3;
+            document.write(n)
+            document.write('<br>');
+            
+            // 변수 선언할때 var 키워드가 없어도 만들어짐. [자동 전역변수가 됨]
+            x=1000;
+            document.write(x);
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AJAX</title>
+
+    <script>
+        // AJAX(Asynchronized JavaScript And XML)
+
+        function aaa() {
+
+            // 네트워크 통신을 수행하는 객체 생성
+            var xhr = new XMLHttpRequest()
+
+            //비동기방식으로 통신하고 결과를 받기에.. 결과 받았을때 발동하는 콜백함수 등록
+            //단, 반드시 send()하기 전에 먼저 등록해 놓아야 함.
+            xhr.onreadystatechange = function () {
+                //통신을 시작하면 서버로 부터 응답을 여러번 받음. (readyState)
+                //서버의 상태변화를 번호로 전달받음
+                //옷공잡업체와 협업을 한다는 예시로 정리를 하면
+                // 0 나 살아있다!
+                // 1 물건받았다!  (서버내가보낸데이터받음)
+                // 2 잡업시작한다! (서버작업시작)
+                // 3 작업끝났다! (서버작업끝남)
+                // 4 보냈다! (ehco완료)
+
+                // 위와같이 상태가 5개가 있는데 서버의 상태변화의 상태를 보통1~4로 리턴해줌 
+                // 고로, 우리가 원하는건 4번일때를 비교하면 됨(서버의 상태에 따라 123번을 리턴안해줄때가 있다함..)
+                // status는 문서가 잘 도착했다의 리턴값 유명한 404에러도 여기 있음
+
+                // 참고(http://www.tcpschool.com/ajax/ajax_server_response)
+                // 검색어(onreadystatechange)/XMLHttpRequest
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('ta').innerHTML = xhr.responseText
+                }
+            }
+
+            xhr.open('GET', './05_getTest.php?title=Hello&msg=nice to meet you.', true) //세번째 파리미터 : 비동기 동작 여부 선택
+            xhr.send()
+
+
+        }
+
+        function bbb() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('ta').innerHTML = xhr.responseText
+                }
+            }
+
+            xhr.open('POST', './05_postTest.php', true)
+
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            xhr.send('id=abcd&pw=1234')
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- 서버와 통신을 form 요소를 사용하지 않고 JS를 이용하여 데이터 주고받기 -->
+    <p>
+        <button onclick="aaa()">GET METHOD</button>
+        <button onclick="bbb()">POST METHOD</button>
+    </p>
+
+    <textarea id="ta" cols="40" rows="5"></textarea>
+
+</body>
+
+</html>

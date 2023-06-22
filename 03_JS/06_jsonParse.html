@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json파싱</title>
+</head>
+
+<body>
+    <h3 id="hh"></h3>
+    <button onclick="aaa()">json object 파싱</button>
+    <button onclick="bbb()">json array 파싱</button>
+
+    <script>
+        function aaa() {
+            // json object 문자열
+            var s = '{"name":"sam", "age":20}'
+
+            // json 문자열을 객체로 변환
+            var person = JSON.parse(s)
+            document.getElementById('hh').innerHTML = person.name + " : " + person.age
+        }
+
+        function bbb() {
+            // json array 문자열
+            var ss = '[' +
+                '{"name":"sam", "age":20},' +
+                '{"name":"robin", "age":25},' +
+                '{"name":"hong", "age":30}' +
+                ']'
+
+            // 배열객체로 파싱
+            var people = JSON.parse(ss)
+
+            var s = ""
+            for (var i = 0; i < people.length; i++) {
+                s += people[i].name + " : " + people[i].age + "<br>"
+            }
+
+            document.getElementById('hh').innerHTML = s
+        }
+    </script>
+
+    <hr>
+
+    <!-- 객체를 json 문자열로 변환 -->
+    <button onclick="ccc()">object to json</button>
+    <button onclick="ddd()">object array to json</button>
+    <h3 id="aa"></h3>
+
+    <script>
+        function ccc() {
+            //JS의 객체
+            var person = {
+                name: "sam",
+                age: 20
+            }
+
+            //object to json string...
+            var json = JSON.stringify(person)
+            document.getElementById('aa').innerHTML = json
+        }
+
+        function ddd() {
+            //object array
+            var people = [
+                { name: "sam", age: 20, address: { nation: "korea", city: "seoul" } },
+                { name: "robin", age: 25, address: { nation: "japan", city: "tokyo" } },
+                { name: "hong", age: 30, address: { nation: "usa", city: "new york" } }
+            ]
+
+            // object array to json string...
+            var json = JSON.stringify(people)
+            document.getElementById('aa').innerHTML = json
+        }
+    </script>
+
+    <!-- csv 나 xml 파일형식 파싱가능함.. csv는 String split 기능 -->
+    <!-- xml, html은 BeatifulSoup 라이브러리가 가장 많아 사용됨 -->
+
+</body>
+
+</html>

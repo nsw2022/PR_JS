@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Operator</title>
+    </head>
+
+    <body>
+        
+        <!-- 내부스크립트 작성 위치는 body안에서도 가능함 -->
+        <script>
+
+            //연산자 중 특이점
+            var a=1;
+            var b="1";
+            var c=1.0
+
+            //수치형과 문자형은 자료형이 다르더라도 값이 같으면 true 비교연산자 ==
+            document.write(a==b);  //true
+            document.write('<br>');
+            document.write(a==c);  // true
+            document.write('<br>');
+
+            // 값과 자료형이 모두 같은지를 비교하는 연산자 ===
+            document.write(a===b);  //false
+            document.write('<br>');
+            document.write(a===c);  //true [정수/실수 모두 number]
+            document.write('<br>');
+
+            document.write('<hr>');
+
+            // 0 나눗셈 - 무한값
+            document.write( 10/0 ); //infinity
+            document.write('<br>');
+
+            // 표현가능한 최대값 : +- 2^1024
+            document.write( Number.MAX_VALUE );
+            document.write('<br>');
+
+            document.write(123456789123456789123456789);
+            document.write('<br>');
+
+            // in, delete 연산자 (객체 속성 관련 연산자..), instanceof도 객체수업에서 소개
+            document.write('<hr>');
+
+            // 수치형과 문자열의 변환 
+            var h=1;
+            document.write(typeof(h));
+            document.write('<br>');
+
+            //h = String(h);
+            h = h+"";
+            document.write(typeof(h));
+            document.write('<br>');
+
+            h = parseInt("4");
+            document.write(typeof(h));
+            document.write('<br>');
+
+            // 숫자로 변경이 불가한 문자열을 parse하면?
+            h = parseInt("aa");
+            document.write(h); //NaN [Not a Number]
+            document.write('<br>');
+
+            // 실수형 타입은?
+            h=parseFloat("3.14");
+            document.write(h);
+            document.write('<br>');
+
+            h=parseInt("3.14"); //3
+            document.write(h);
+            document.write('<br>');
+
+            document.write('<hr>');
+
+            // 왜? 수치형<->문자형 변환을 알아야 할까?
+            // 사용자가 웹 브라우저를 통해 입력하는 모든 값은 string 타입
+            var age = prompt("당신의 나이를 입력하세요",0);
+            document.write(age + 3); //문자열 결합
+            document.write('<br>');
+
+            age=parseInt(age); //string-->number
+            document.write(age + 3); // 산술연한
+            document.write('<br>');
+
+            // 사용자 입력을 다이얼로그 형태로 받는거 좀 번거로움.
+            // HTML의 입력요소(input)를 이용하여 값을 받고 연산 수행해보기
+            // 다음예제..
+
+
+        </script>
+
+    </body>
+</html>

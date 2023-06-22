@@ -1,0 +1,11 @@
+01_test 팔렛트느낌
+01_upgrade 회원가입창
+02_nav 상단 제목바연습
+03 반응형상단 바 연습
+04 카드리스트 연습 
+05 신종 Html 태그 css랑 JS가 필요없을정도로 좋다해서 테스트 출처 https://www.youtube.com/watch?v=EMOlLLTAZMs&t=233
+06 JS 연습본
+
+======================================
+개인적으로 이뻣던것 및 유용한 기능
+01_upgrade, 04_CardList 05_newHtml

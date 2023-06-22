@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+<ol>
+    <li class="on">
+        <h4><span>Q1</span> 사전 물건 확인</h4>
+        <p>
+            등기부등본, 건축물대장 열람, 실제 내부 확인
+            수익형부동산 투자의 경우 수익률을 미리 정확히 계산을 한다.
+        </p>
+    </li>
+    <li>
+        <h4><span>Q2</span> 가계약 체결</h4>
+        <p>
+            중개사무소에서 가계약 요청 및 보통 100~500만원을 부동산 소유주의 계좌로 입금
+            중개사 계좌로 입금하면 절대 안된다. (형사고발대상)
+        </p>
+    </li>
+    <li>
+        <h4><span>Q3-4</span> 매매계약 : 매매 계약서 작성</h4>
+        <p>
+            3-1~3-3이 테이블 형태라 어떻게 넣을지 고민!!
+            3-1~3 사항들을 준수하여 계약서를 작성 및 간인 후 매수인, 매도자 각각 1부씩 보관한다.
+        </p>
+    </li>
+    <li>
+        <h4><span>Q4</span> 잔금납부 및 소유권이전 : 주의사항</h4>
+        <p>
+            마지막으로 한번 더 등기부등본을 재확인하여 계약체결 후 추가 저당권이 설정되거나 이중계약 등의 권리변동이 있는지 확인한다.
+            최종 잔금납부 전 다시 한번 집 상태를 확인하여 계약 날짜와 집 상태가 같은지 확인한다.
+            하자가 없으면 매도인으로부터 등기이전에 필요한 서류가 빠짐없이 구비됐는지 확인하고 잔금을 지급함과 동시에 영수증을 건네받는다.
+            취득세 영수증 보관 (양도세 낼 때 시세차익이 많이 난다면 필요)
+        </p>
+    </li>
+
+</ol>
+
+<script>
+    // 토글버전
+    $(function(){
+        $(".information_box ol li").click(function(){
+            // 클릭한 대상에게 클래스 "on"을 추가 또는 제거하여 확장 및 축소
+            $(this).toggleClass("on");
+
+        });
+    });
+
+  
+</script>
+    
+</body>
+</html>
