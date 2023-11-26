@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신종 HTML 태그 리스트</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <style>
         /* linear-gradient : 그라데이션 생성 */
         /* https://developer.mozilla.org/ko/docs/Web/CSS/gradient/linear-gradient */
@@ -16,6 +17,8 @@
                     #ffec82 37%,
                     #ffcfd2 100%);
         }
+
+      
     </style>
     <script>
         function redirectToPage() {
@@ -92,6 +95,7 @@
             <option value="챗지피티" data-url="https://chat.openai.com/" ></option>
             <option value="애플" data-url="https://www.apple.com" ></option>
         </datalist>
+
         <button onclick="redirectToPage()">버튼</button>
         <button type="reset">취소</button>
     </form>
@@ -100,11 +104,11 @@
     <!-- 스크립트써서 구현해봄 -->
     <input type="text" name="" id="search" onkeyup="onSearch()">
     <ul id="list">
-        <li>첫번째</li>
-        <li>두번째</li>
-        <li>세번째</li>
-        <li>네번째</li>
-        <li>다섯번째</li>
+        <li>아이언맨</li>
+        <li>앤드게임</li>
+        <li>존윅</li>
+        <li>안떠오르네뭐있으려나</li>
+        <li>마다가스카</li>
     </ul>
     <script>
         const onSearch = () => {
@@ -120,11 +124,14 @@
             });
         };
     </script>
+    
+
+
     <br>
-    <select name="none" onchange="window.open(value,'_blank');">
+    <select name="none" onchange="window.open(value,'_self');">
         <option value="none">------ 관련 사이트 ------</option>
         <optgroup label="그룹001">
-            <option value="http://kosen21.org">코센(KOSEN)</option>
+            <option value="http://kosen21.org"> 코센(KOSEN) </option>
             <option value="https://www.nkis.re.kr:4445">국가정책연구포털(NKIS)</option>
             <option value="http://www.eaerweb.org">East Asian Economic Review</option>
         </optgroup>

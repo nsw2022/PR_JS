@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신종 HTML 태그 리스트</title>
+    <style>
+        /* linear-gradient : 그라데이션 생성 */
+        /* https://developer.mozilla.org/ko/docs/Web/CSS/gradient/linear-gradient */
+        #details[open] {
+            background-color: #cdedfd;
+            background-image: linear-gradient(319deg,
+                    #cdedfd 0%,
+                    #ffec82 37%,
+                    #ffcfd2 100%);
+        }
+
+        #transparent-box {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 0, 0, 0); /* 초기 투명도를 0으로 설정 */
+            transition: background-color 0.5s ease; /* 투명도 변화에 대한 전환 효과 설정 */
+        }
+
+        #transparent-box:hover {
+            background-color: rgba(255, 0, 0, 0.5); /* 마우스 호버 시 투명도 조절 */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="transparent-box"></div>
+</body>
+
+</html>

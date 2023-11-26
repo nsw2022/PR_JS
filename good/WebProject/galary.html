@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>페이지 제작</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="./js/app.js"></script>
+</head>
+<body>
+
+	<!-- section3 --------------------------------------------- -->
+    <section id="section3">
+        <div class="container">
+            <h1>갤러리</h1>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/s1.jpg" alt="" onclick="showDivs(1)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nam.
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/s2.jpg" alt="" onclick="showDivs(2)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, numquam.
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/s3.jpg" alt="" onclick="showDivs(3)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, fugit!
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/s4.jpg" alt="" onclick="showDivs(4)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, sequi?
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <!-- //section3 -->
+    
+    <div id="back"></div>
+    <div id="popup">
+        <div class="title">SandArt Popup <span class="close" onclick="closePopup()">&times;</span></div>
+         <div align="center" class="large">
+			<div class="small">
+				<img class="mySlides" src="image/s1.jpg">
+				<img class="mySlides" src="image/s2.jpg">
+				<img class="mySlides" src="image/s3.jpg">
+				<img class="mySlides" src="image/s4.jpg">
+				
+				<a class="leftbtn" onclick="plusDivs(-1)">◀</a>
+				<a class="rightbtn" onclick="plusDivs(1)">▶</a>
+			</div>
+		</div>
+    </div>
+  
+    
+	<script>
+		var slideIndex=0;
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+		function showDivs(n) {
+		  var i;
+		  slideIndex = n;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = x.length} ;
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";  
+		  }
+		  x[slideIndex-1].style.display = "block";  
+		  document.getElementById("back").style.display = "block";
+		  document.getElementById("popup").style.display = "block"; 
+		} 
+		
+		function closePopup(){
+			document.getElementById("back").style.display = "none";
+		    document.getElementById("popup").style.display = "none";
+		}
+	</script>
+</body>
+</html>

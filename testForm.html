@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 시스템</title>
+<style>
+  .time-slot {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: #99ccff;
+  }
+</style>
+</head>
+<body>
+  <h1>예약 시스템</h1>
+  <div id="timeSlots">
+    <!-- 여기에 시간대를 동적으로 추가할 예정 -->
+  </div>
+  <button id="bookButton">예약하기</button>
+  <button id="cancelButton">선택 취소</button>
+  <div id="message"></div>
+  <script>
+    const timeSlots = [
+      "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM",
+      "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"
+    ];
+
+    const timeSlotsContainer = document.getElementById("timeSlots");
+    const bookButton = document.getElementById("bookButton");
+    const message = document.getElementById("message");
+
+    let startSlotIndex = -1;
+    let endSlotIndex = -1;
+
+    function renderTimeSlots() {
+      timeSlotsContainer.innerHTML = "";
+      timeSlots.forEach((time, index) => {
+        const slot = document.createElement("div");
+        slot.className = "time-slot";
+        slot.textContent = time;
+        slot.addEventListener("click", (event) => selectTime(event, index));
+        timeSlotsContainer.appendChild(slot);
+      });
+    }
+
+    function selectTime(event, slotIndex) {
+      if (startSlotIndex === -1) {
+        startSlotIndex = slotIndex;
+        event.target.classList.add("selected");
+      } else if (endSlotIndex === -1) {
+        endSlotIndex = slotIndex;
+        event.target.classList.add("selected");
+
+        const minIndex = Math.min(startSlotIndex, endSlotIndex);
+        const maxIndex = Math.max(startSlotIndex, endSlotIndex);
+
+        for (let i = minIndex + 1; i < maxIndex; i++) {
+          timeSlotsContainer.children[i].classList.add("selected");
+        }
+
+        startSlotIndex = -1;
+        endSlotIndex = -1;
+      }
+    }
+
+    bookButton.addEventListener("click", () => {
+      const selectedSlots = document.querySelectorAll(".time-slot.selected");
+      if (selectedSlots.length > 0) {
+        const selectedTimes = Array.from(selectedSlots).map(slot => slot.textContent);
+        message.textContent = `선택한 시간: ${selectedTimes.join(", ")}에 예약되었습니다.`;
+      } else {
+        message.textContent = "시간을 선택해주세요.";
+      }
+    });
+
+    cancelButton.addEventListener("click", () => {
+        const selectedSlots = document.querySelectorAll(".time-slot.selected");
+        selectedSlots.forEach(slot => slot.classList.remove("selected"));
+        message.textContent = "";
+    });
+
+    renderTimeSlots();
+  </script>
+</body>
+</html>

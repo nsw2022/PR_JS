@@ -9,22 +9,75 @@
     <!-- CDN 방식 CDN이 뭐나면.. 안알랴줌 -->
     <script src="https://code.jquery.com/jquery-3.6.4.js"
         integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <style>
+           /* 탭 스타일 */
+
+.tab-content {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.tab-content.active {
+  display: block;
+  height: 1000px;
+}
+
+.tab-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-links li {
+  display: inline;
+  width: calc(25% - 5px); /* Adjust the width as needed */
+}
+
+.tab-links li a {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 4px 4px 0 0;
+  margin-right: 5px;
+}
+
+.tab-links li:nth-child(1) a {
+  padding: 10px 40px; 
+  
+}
+
+.tab-links li:nth-child(2) a {
+  padding: 10px 60px; 
+  
+}
+
+.tab-links a:hover {
+  background-color: #ddd;
+}
+
+        </style>
 </head>
 
 <body>
     <section id="content">
         <h3>집집의 알려드려요!</h3>
-        <div>
-            <a href="./category/info_budong.html" target="test">부동산매매</a>
-            <a href="./category/info_jutak.html" target="test">주택</a>
-            <a href="./category/info_trouble.html" target="test">주택임대차분쟁</a>
-            <a href="./category/info_gondong_trouble.html" target="test">공동주택관리분쟁</a>
-        </div>
-        <div class="information_box">
+        <ul class="tab-links">
+            <li><a href="./category/info_budong.html" class="active"  target="test">부동산매매</a></li>
+            <li><a href="./category/info_jutak.html"  target="test">주택</a></li>
+            <li><a href="./category/info_trouble.html"  target="test">주택임대차분쟁</a></li>
+            <li><a href="./category/info_gondong_trouble.html"  target="test">공동주택관리분쟁</a></li>
+        </ul>
+        <div class="tab-content active" id="tab1">
             <iframe src="./category/info_budong.html" frameborder="0" width="100%" height="100%" name="test"></iframe>
         </div>
+        
     </section>
-
+    
     <div id="smart">
         <div id="smart_j">
             <h4>똑똑하게 집 구하기</h4>

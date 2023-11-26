@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 시스템</title>
+<style>
+  .time-slot {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: #99ccff;
+  }
+</style>
+</head>
+<body>
+  <h1>예약 시스템</h1>
+  <div id="timeSlots">
+    <!-- 여기에 시간대를 동적으로 추가할 예정 -->
+  </div>
+  <button id="bookButton">예약하기</button>
+  <div id="message"></div>
+  <script>
+    const timeSlots = [
+      "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM",
+      "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"
+    ];
+
+    const timeSlotsContainer = document.getElementById("timeSlots");
+    const bookButton = document.getElementById("bookButton");
+    const message = document.getElementById("message");
+
+    function renderTimeSlots() {
+      timeSlotsContainer.innerHTML = "";
+      timeSlots.forEach(time => {
+        const slot = document.createElement("div");
+        slot.className = "time-slot";
+        slot.textContent = time;
+        slot.addEventListener("click", (event) => selectTime(event));
+        timeSlotsContainer.appendChild(slot);
+      });
+    }
+
+    let isGroupSelecting = false;
+
+    function selectTime(event) {
+      const selectedSlots = document.getElementsByClassName("selected");
+      for (const slot of selectedSlots) {
+        slot.classList.remove("selected");
+      }
+
+      if (isGroupSelecting) {
+        const startSlot = Array.from(timeSlotsContainer.children).indexOf(event.target);
+        const endSlot = Array.from(timeSlotsContainer.children).indexOf(event.relatedTarget);
+
+        const slots = Array.from(timeSlotsContainer.children).slice(
+          Math.min(startSlot, endSlot),
+          Math.max(startSlot, endSlot) + 1
+        );
+
+        for (const slot of slots) {
+          slot.classList.add("selected");
+        }
+
+        isGroupSelecting = false;
+      } else {
+        event.target.classList.add("selected");
+      }
+    }
+
+    bookButton.addEventListener("click", () => {
+      const selectedSlots = document.querySelectorAll(".time-slot.selected");
+      if (selectedSlots.length > 0) {
+        const selectedTimes = Array.from(selectedSlots).map(slot => slot.textContent);
+        message.textContent = `선택한 시간: ${selectedTimes.join(", ")}에 예약되었습니다.`;
+      } else {
+        message.textContent = "시간을 선택해주세요.";
+      }
+    });
+
+    timeSlotsContainer.addEventListener("mousedown", (event) => {
+      if (event.button === 2) {
+        isGroupSelecting = true;
+      }
+    });
+
+    timeSlotsContainer.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+
+    renderTimeSlots();
+  </script>
+</body>
+</html>

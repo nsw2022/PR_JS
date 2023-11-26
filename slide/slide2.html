@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Slider</title>
+  <style>
+    .slider-container {
+      width: 1000px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slider {
+      width: 900px;
+      height: 400px;
+      position: absolute;
+      transition: left 0.5s;
+    }
+    .slider-box {
+      width: 3000px;
+      height: 400px;
+      display: flex;
+    }
+    .slider-item {
+      width: 350px;
+      height: 400px;
+    }
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider-navigation {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      
+    }
+    .slider-navigation button {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+    .slider-navigation button:hover {
+      color: #555;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var currentSlide = 0;
+      var slideCount = $(".slider-item").length;
+      
+      function showSlide(index) {
+        $(".slider").stop().animate({ left: -index * 750 }, 500);
+      }
+      
+      function showNextSlide() {
+        currentSlide++;
+        if (currentSlide >= slideCount) {
+          currentSlide = 0;
+        }
+        showSlide(currentSlide);
+      }
+      
+      function showPrevSlide() {
+        currentSlide--;
+        if (currentSlide < 0) {
+          currentSlide = slideCount - 1;
+        }
+        showSlide(currentSlide);
+      }
+      
+      $(".slider-navigation .next").click(function() {
+        showNextSlide();
+      });
+      
+      $(".slider-navigation .prev").click(function() {
+        showPrevSlide();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slider-box">
+        <div class="slider-item">
+          <img src="./ms19.png" alt="Image 1">
+        </div>
+        <div class="slider-item">
+          <img src="./ms19.png" alt="Image 2">
+        </div>
+        <div class="slider-item">
+          <img src="./ms19.png" alt="Image 3">
+        </div>
+        <div class="slider-item">
+          <img src="./ms21.png" alt="Image 4">
+        </div>
+        <div class="slider-item">
+          <img src="./ms21.png" alt="Image 5">
+        </div>
+        <div class="slider-item">
+          <img src="./ms21.png" alt="Image 6">
+        </div>
+        <div class="slider-item">
+          <img src="./sky.jpg" alt="Image 7">
+        </div>
+        <div class="slider-item">
+          <img src="./sky.jpg" alt="Image 8">
+        </div>
+        <div class="slider-item">
+          <img src="./sky.jpg" alt="Image 9">
+        </div>
+      </div>
+    </div>
+    <div class="slider-navigation">
+      <button class="prev">&lt;</button>
+      <button class="next">&gt;</button>
+    </div>
+  </div>
+</body>
+</html>

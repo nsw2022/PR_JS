@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Slider</title>
+  <style>
+    .slider-container {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slider {
+      width: 3000px;
+      height: 400px;
+      position: absolute;
+      transition: left 0.5s;
+    }
+
+    .slider:nth-of-type(2) {
+        right: 600;
+        position: absolute;
+    }
+
+    .slider:nth-of-type(3) {
+        position: absolute;
+        right: 1200;
+    }
+
+    .slider-box {
+      width: 600px;
+      height: 400px;
+      float: left;
+    }
+    .slider img {
+      width: 600px;
+      height: 400px;
+      float: left;
+    }
+    .slider-navigation {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .slider-navigation button {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+    .slider-navigation button:hover {
+      color: #555;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var currentSlide = 0;
+      var slideCount = $(".slider").length;
+      
+      function showSlide(index) {
+        $(".slider").stop().animate({ left: -index * 600 }, 500);
+      }
+      
+      function showNextSlide() {
+        currentSlide++;
+        if (currentSlide >= slideCount) {
+          currentSlide = 0;
+        }
+        showSlide(currentSlide);
+      }
+      
+      function showPrevSlide() {
+        currentSlide--;
+        if (currentSlide < 0) {
+          currentSlide = slideCount - 1;
+        }
+        showSlide(currentSlide);
+      }
+      
+      $(".slider-navigation .next").click(function() {
+        showNextSlide();
+      });
+      
+      $(".slider-navigation .prev").click(function() {
+        showPrevSlide();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="slider-container">
+
+      <div class="slider">
+        <img src="./bg.png" alt="Image 1">
+        <img src="./ms19.png" alt="Image 2">
+        <img src="./ms21.png" alt="Image 3">
+      </div>
+      <div class="slider">
+        <img src="./ms19.png" alt="Image 2">
+        <img src="./bg.png" alt="Image 1">
+        <img src="./ms21.png" alt="Image 3">
+      </div>
+      <div class="slider">
+        <img src="./ms21.png" alt="Image 3">
+        <img src="./bg.png" alt="Image 1">
+        <img src="./ms19.png" alt="Image 2">
+      </div>
+
+    <div class="slider-navigation">
+      <button class="prev">&lt;</button>
+      <button class="next">&gt;</button>
+    </div>
+  </div>
+</body>
+</html>

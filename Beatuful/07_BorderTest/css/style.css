@@ -1,5 +1,7 @@
 /* 제가 재주가없어 css영역 마지막 단은 양쪽에 #### 을 붙히겠음 */
 /* 보시는데 불편해도 양해바람 */
+/* font-size -> 1.4 rem => 16px 변경 */
+
 
 *{margin: 0;padding: 0;}
 ul, li{list-style: none;}
@@ -25,7 +27,8 @@ a{text-decoration: none;color: initial;}
     /* 그말인 즉슨 최상위 태그의 값을 설정안하면 em을 한들 */
     /* rem을 한들 크기가 변하지 않음 */
     /* 최상위 태그는 html임 고로 html에 폰트사이즈를 주겠음 */
-    font-size: 3rem;
+    /*font-size: 3rem;*/
+    font-size: 42px;
 }
 
 html{
@@ -39,7 +42,7 @@ html{
 
 .board_title p{
     margin-top: 5px;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 /* #### .board_title : 게시판 제목영역 #### */
 
@@ -73,7 +76,7 @@ html{
 /* 각각의 칸 설정 */
 .board_list > div > div{
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 16px;
     text-align: center;
     vertical-align: middle;
     padding: 15px 0;
@@ -136,13 +139,13 @@ html{
 
 .board_page a.bt{
     padding-top: 10px;
-    font-size: 1.2rem;
+    font-size: 14px;
     letter-spacing: -1px;
 }
 
 .board_page a.num{
     padding-top: 10px;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 
 /*  a태그이면서 num에 클래스이면서 on에 클래스인 요론느낌 */
@@ -172,7 +175,7 @@ html{
     padding: 10px;
     border: 1px solid #000;
     border-radius: 2px;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 
 .bt_wrap a:first-child{margin-left: 0;}
@@ -238,7 +241,7 @@ html{
 .board_view .info dl dt,
 .board_view .info dl dd {
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 
 
@@ -252,7 +255,7 @@ html{
     padding: 15px;
     border-bottom: 1px solid #000;
     line-height: 160%;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 
 
@@ -295,7 +298,7 @@ html{
 .board_write .info dd{
     display: inline-block;
     vertical-align: middle;
-    font-size: 1.4rem;
+    font-size: 16px;
 }
 
 .board_write .title dt,
