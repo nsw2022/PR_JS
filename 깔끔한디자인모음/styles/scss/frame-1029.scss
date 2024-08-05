@@ -1,0 +1,45 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 28.5rem;
+}.frame-1029-WH7 {
+  border: solid 0.1rem #17a2b8;
+  background-color: #ffffff;
+  border-radius: 0.8rem;
+  box-sizing: border-box;
+  padding: 1.2rem 1.6rem 1.2rem 2.4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .type-sql-injection-329 {
+    margin: 0.1rem 17.9rem 0rem 0rem;
+    text-align: right;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2125;
+    flex-shrink: 0;
+    color: #54595e;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+  }
+  .frame-1013-LG9 {
+    width: 2.4rem;
+    height: 2.4rem;
+    object-fit: contain;
+    vertical-align: top;
+    flex-shrink: 0;
+  }
+}

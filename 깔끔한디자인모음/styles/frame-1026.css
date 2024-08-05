@@ -1,0 +1,163 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 28.5rem;
+}.frame-1026-mkm {
+  box-sizing: border-box;
+  padding: 2.4rem 2.4rem 2.3rem 2.4rem;
+  width: 100%;
+  height: 22.7rem;
+  border: solid 0.1rem #dee2e6;
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.0799999982), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1000000015);
+  background-color: #ffffff;
+  border-radius: 0.8rem;
+}
+.frame-1026-mkm .frame-596-uMB {
+  width: 11.5rem;
+  height: 100%;
+}
+.frame-1026-mkm .frame-596-uMB .status-rnD {
+  margin-bottom: 2.3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2125;
+  color: #6c757d;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z {
+  box-sizing: border-box;
+  padding-bottom: 1.9rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-750-tU1 {
+  margin: 0rem 4.5rem 1.9rem 0rem;
+  width: calc(100% - 4.5rem);
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-750-tU1 .frame-1022-1Hj {
+  margin: 0rem 1rem 0.1rem 0rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+  vertical-align: top;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-750-tU1 .open-7rZ {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #17a2b8;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-751-r3T {
+  margin-right: 4.5rem;
+  width: calc(100% - 4.5rem);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-751-r3T .frame-1021-P3P {
+  margin: 0.05rem 1rem 0.15rem 0rem;
+  width: 1.8rem;
+  height: calc(100% - 0.2rem);
+  border: solid 0.2rem #9ec5fe;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .auto-group-httj-x4Z .frame-751-r3T .fixed-gYH {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #54595e;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-752-1Kf {
+  margin-bottom: 1.9rem;
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-752-1Kf .frame-1021-wj7 {
+  margin: 0.05rem 1rem 0.15rem 0rem;
+  width: 1.8rem;
+  height: calc(100% - 0.2rem);
+  border: solid 0.2rem #ced4da;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-752-1Kf .in-progress-ETK {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #6c757d;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-753-ALy {
+  margin-right: 3.3rem;
+  width: calc(100% - 3.3rem);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-753-ALy .frame-1021-JTB {
+  margin: 0.05rem 1rem 0.15rem 0rem;
+  width: 1.8rem;
+  height: calc(100% - 0.2rem);
+  border: solid 0.2rem #ced4da;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.frame-1026-mkm .frame-596-uMB .frame-591-Pn9 .frame-753-ALy .closed-D4M {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #6c757d;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
