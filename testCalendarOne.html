@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>06_diary</title>
+    <style>
+      #wrapper {
+        width: 440px;
+        height: 500px;
+        padding: 5px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+      }
+      #wrapper > div {
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        line-height: 40px;
+        float: left;
+      }
+      #currentDate {
+        text-align: center;
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      #navButtons {
+        text-align: center;
+        margin-top: 20px;
+      }
+      button {
+        margin: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>06_diary</h1>
+    <div id="currentDate"></div>
+    <div id="wrapper">
+      <div>일</div>
+      <div>월</div>
+      <div>화</div>
+      <div>수</div>
+      <div>목</div>
+      <div>금</div>
+      <div>토</div>
+    </div>
+    <div id="navButtons">
+      <button onclick="changeMonth(-1)">← 이전 달</button>
+      <button onclick="changeMonth(1)">다음 달 →</button>
+    </div>
+
+    <script>
+      var currentDate = new Date();
+
+      function generateCalendar(date) {
+        var wra = document.getElementById("wrapper");
+        var currentDateDiv = document.getElementById("currentDate");
+
+        wra.innerHTML =
+          "<div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>";
+        currentDateDiv.textContent =
+          date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2);
+
+        date.setDate(1);
+        var firstDay = date.getDay();
+        var lastDay = new Date(
+          date.getFullYear(),
+          date.getMonth() + 1,
+          0
+        ).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+          wra.innerHTML += "<div></div>";
+        }
+
+        for (let i = 1; i <= lastDay; i++) {
+          const dayDiv = document.createElement("div");
+          dayDiv.textContent = i;
+          dayDiv.onclick = function () {
+            alert("You selected: " + i + " " + currentDateDiv.textContent);
+          };
+          wra.appendChild(dayDiv);
+        }
+      }
+
+      function changeMonth(direction) {
+        currentDate.setMonth(currentDate.getMonth() + direction);
+        generateCalendar(currentDate);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        generateCalendar(currentDate);
+      });
+    </script>
+  </body>
+</html>

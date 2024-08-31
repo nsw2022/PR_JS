@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>11_year</title>
+    <style>
+      #tot {
+        width: 1386px;
+      }
+      #wrapper {
+        width: 440px;
+        height: 500px;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+      }
+      #wrapper > div {
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        line-height: 40px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>11_year</h1>
+    <input type="text" id="yyyy" />
+    <input type="button" value="출력" onclick="yyGo()" />
+    <div id="tot"></div>
+    <script>
+      function mmm(mt) {
+        var wra = "<div id='wrapper'>";
+        function wrPlus(ttt) {
+          wra += "<div>" + ttt + "</div>";
+        }
+        var today = new Date(mt);
+        var first = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
+        var last = new Date(
+          today.getFullYear(),
+          today.getMonth() + 1,
+          0
+        ).getDate();
+
+        wra += "<h2>" + mt.substring(0, mt.length - 3) + "</h2>";
+        for (const i of "일월화수목금토") {
+          wrPlus(i);
+        }
+        for (let i = 0; i < first; i++) {
+          wrPlus("");
+        }
+        for (let i = 1; i <= last; i++) {
+          wrPlus(i);
+        }
+        wra += "</div>";
+        return wra;
+      }
+
+      function yyGo() {
+        var tot = document.getElementById("tot");
+        tot.innerHTML = "";
+        var yyyy = document.getElementById("yyyy").value;
+        for (let i = 1; i <= 12; i++) {
+          var month = i < 10 ? "0" + i : i; // 월 값을 두 자릿수로 처리
+          tot.innerHTML += mmm(yyyy + "-" + month + "-01");
+        }
+      }
+    </script>
+  </body>
+</html>
