@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .drawer {
+        height: 100%;
+        width: 0; /* 초기에는 드로어가 보이지 않습니다 */
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s; /* 슬라이드 효과를 부드럽게 함 */
+        padding-top: 60px;
+      }
+      .drawer a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .drawer a:hover {
+        color: #f1f1f1;
+      }
+      .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myDrawer" class="drawer">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeDrawer()"
+        >&times;</a
+      >
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <span style="font-size: 30px; cursor: pointer" onclick="openDrawer()"
+      >&#9776; open</span
+    >
+
+    <script>
+      function openDrawer() {
+        document.getElementById("myDrawer").style.width = "250px";
+      }
+
+      function closeDrawer() {
+        document.getElementById("myDrawer").style.width = "0";
+      }
+    </script>
+  </body>
+</html>

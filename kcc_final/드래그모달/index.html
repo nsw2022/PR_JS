@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draggable Modal</title>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+  </head>
+  <body>
+    <button id="open-modal">모달 열기</button>
+
+    <div id="modal" title="Draggable Modal">
+      <p>이 모달은 드래그가 가능합니다!</p>
+    </div>
+
+    <!-- jQuery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI 라이브러리 -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(function () {
+        // 모달 초기화
+        $("#modal").dialog({
+          autoOpen: false, // 자동으로 열리지 않도록 설정
+          draggable: true, // 드래그 가능하도록 설정
+          width: 400, // 너비 설정
+          modal: true, // 배경을 어둡게 처리
+          buttons: {
+            // 버튼 추가
+            닫기: function () {
+              $(this).dialog("close");
+            },
+          },
+        });
+
+        // 모달 열기 버튼
+        $("#open-modal").click(function () {
+          $("#modal").dialog("open");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #eee;
+}
+
+h1 {
+  font-size: 2.5em; /* 크고 눈에 띄게 */
+  color: #0a84ff;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #666;
+}
+
+p {
+  font-size: 1em;
+  color: #333;
+}
+
+.cta {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #0a84ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.cta:hover {
+  background-color: #0070d2;
+}
