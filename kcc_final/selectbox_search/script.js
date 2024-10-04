@@ -50,12 +50,13 @@ let countries = [
   "United States",
   "United Kingdom",
   "Vietnam",
+  "Apple", // 추가된 항목
 ];
 
 function addCountry(selectedCountry) {
   options.innerHTML = "";
   countries.forEach((country) => {
-    let isSelected = country == selectedCountry ? "selected" : "";
+    let isSelected = country === selectedCountry ? "selected" : "";
     let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
     options.insertAdjacentHTML("beforeend", li);
   });
@@ -69,16 +70,17 @@ function updateName(selectedLi) {
   selectBtn.firstElementChild.innerText = selectedLi.innerText;
 }
 
+// 검색 기능을 includes로 변경
 searchInp.addEventListener("keyup", () => {
   let arr = [];
   let searchWord = searchInp.value.toLowerCase();
   arr = countries
     .filter((data) => {
-      return data.toLowerCase().startsWith(searchWord);
+      return data.toLowerCase().includes(searchWord);
     })
     .map((data) => {
       let isSelected =
-        data == selectBtn.firstElementChild.innerText ? "selected" : "";
+        data === selectBtn.firstElementChild.innerText ? "selected" : "";
       return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
     })
     .join("");
