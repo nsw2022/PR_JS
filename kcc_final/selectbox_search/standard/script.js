@@ -57,7 +57,7 @@ function addCountry(selectedCountry) {
   options.innerHTML = "";
   countries.forEach((country) => {
     let isSelected = country === selectedCountry ? "selected" : "";
-    let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
+    let li = `<li onclick="updateName(this)" class="${isSelected} county-list">${country}</li>`;
     options.insertAdjacentHTML("beforeend", li);
   });
 }
