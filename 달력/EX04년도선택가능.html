@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커스텀 여러 날짜 선택 달력</title>
+    <!-- 부트스트랩 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeo4Yk4Rx3E0YMWKDr5v7z86GzH+6BjhPU6nCTF0n0p5P5Ig"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* 커스텀 달력 테이블 스타일 */
+      #calendar-body td {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      #calendar-body td:hover {
+        background-color: #e9ecef;
+      }
+      .selected {
+        background-color: #0d6efd;
+        color: white;
+        border-radius: 50%;
+      }
+      .disabled {
+        background-color: #f8f9fa;
+        color: #6c757d;
+        cursor: not-allowed;
+      }
+      .today {
+        border: 2px solid #28a745;
+      }
+      @media (max-width: 600px) {
+        #calendar-body td {
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center">커스텀 달력 - 여러 날짜 선택</h2>
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-6 col-sm-12 mb-2">
+              <label for="year-select" class="form-label">연도 선택</label>
+              <select id="year-select" class="form-select">
+                <!-- 연도 선택 옵션은 JS에서 동적으로 생성됩니다. -->
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-12 mb-2">
+              <label for="month-select" class="form-label">월 선택</label>
+              <select id="month-select" class="form-select">
+                <!-- 월 선택 옵션은 HTML에서 정의됩니다. -->
+                <option value="0">1월</option>
+                <option value="1">2월</option>
+                <option value="2">3월</option>
+                <option value="3">4월</option>
+                <option value="4">5월</option>
+                <option value="5">6월</option>
+                <option value="6">7월</option>
+                <option value="7">8월</option>
+                <option value="8">9월</option>
+                <option value="9">10월</option>
+                <option value="10">11월</option>
+                <option value="11">12월</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th>월</th>
+                  <th>화</th>
+                  <th>수</th>
+                  <th>목</th>
+                  <th>금</th>
+                  <th>토</th>
+                  <th>일</th>
+                </tr>
+              </thead>
+              <tbody id="calendar-body">
+                <!-- 달력 날짜가 여기에 생성됩니다 -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button id="reset-selection" class="btn btn-secondary">
+              선택 초기화
+            </button>
+          </div>
+
+          <!-- 선택된 날짜를 표시할 영역 -->
+          <div class="mt-3">
+            <h5>선택된 날짜:</h5>
+            <ul id="selected-dates-list" class="list-group">
+              <!-- 선택된 날짜가 여기에 추가됩니다 -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 부트스트랩 JS 및 의존성 포함 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-q5PwNfML+JxRhE27EjUbbvPSBSA0bI7m3V5OnGThTmrbECba+/oXCVNw/sUks8j6"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery 포함 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function calender() {
+          const $calendarBody = $("#calendar-body");
+          const $monthSelect = $("#month-select");
+          const $yearSelect = $("#year-select");
+          const $selectedDatesList = $("#selected-dates-list");
+          let selectedDates = []; // 전체 날짜를 'YYYY-MM-DD' 형식으로 저장
+
+          // 오늘 날짜 정보 가져오기
+          const today = new Date();
+          const todayYear = today.getFullYear();
+          const todayMonth = today.getMonth(); // 0-based index
+          const todayDate = today.getDate();
+
+          // 현재 연도 설정
+          const currentYear = todayYear;
+
+          // 연도 선택 옵션 생성 (현재 연도 -1부터 현재 연도 +5까지)
+          const startYear = currentYear - 1;
+          const endYear = currentYear + 5;
+          for (let year = startYear; year <= endYear; year++) {
+            $yearSelect.append(new Option(year, year));
+          }
+          $yearSelect.val(currentYear); // 현재 연도를 기본값으로 설정
+
+          // 선택된 날짜를 목록에 추가하는 함수
+          function updateSelectedDatesList() {
+            $selectedDatesList.empty();
+            selectedDates.forEach((date) => {
+              $selectedDatesList.append(
+                `<li class="list-group-item">${date}</li>`
+              );
+            });
+          }
+
+          function generateCalendar(month, year) {
+            // 달력 초기화
+            $calendarBody.empty();
+
+            // 첫 번째 날과 마지막 날짜 계산
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            let day = 1;
+            let $row = $("<tr></tr>");
+
+            // 월요일 시작으로 설정 (일요일을 0으로 간주)
+            for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+              $row.append($("<td></td>"));
+            }
+
+            // 첫 주 날짜 채우기
+            for (
+              let i = firstDay === 0 ? 6 : firstDay - 1;
+              i < 7 && day <= lastDate;
+              i++, day++
+            ) {
+              const $cell = $("<td></td>").text(day);
+              const dateString = `${year}-${String(month + 1).padStart(
+                2,
+                "0"
+              )}-${String(day).padStart(2, "0")}`; // 'YYYY-MM-DD' 형식
+
+              // 오늘 날짜인지 확인
+              const isToday =
+                day === todayDate && month === todayMonth && year === todayYear;
+
+              // 오늘 이전 날짜인지 확인
+              if (
+                year < todayYear ||
+                (year === todayYear && month < todayMonth) ||
+                (year === todayYear && month === todayMonth && day < todayDate)
+              ) {
+                // 오늘 이전 날짜는 비활성화
+                $cell.addClass("disabled");
+              } else {
+                // 선택된 날짜인지 확인
+                if (selectedDates.includes(dateString)) {
+                  $cell.addClass("selected");
+                }
+
+                // 오늘 날짜에 특별한 스타일 적용
+                if (isToday) {
+                  $cell.addClass("today");
+                }
+
+                // 클릭 이벤트 추가
+                $cell.on("click", function () {
+                  if ($(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                    selectedDates = selectedDates.filter(
+                      (d) => d !== dateString
+                    );
+                  } else {
+                    $(this).addClass("selected");
+                    selectedDates.push(dateString);
+                  }
+                  updateSelectedDatesList();
+                });
+              }
+
+              $row.append($cell);
+            }
+
+            $calendarBody.append($row);
+
+            // 나머지 주 날짜 채우기
+            while (day <= lastDate) {
+              $row = $("<tr></tr>");
+              for (let i = 0; i < 7 && day <= lastDate; i++, day++) {
+                const $cell = $("<td></td>").text(day);
+                const dateString = `${year}-${String(month + 1).padStart(
+                  2,
+                  "0"
+                )}-${String(day).padStart(2, "0")}`; // 'YYYY-MM-DD' 형식
+
+                // 오늘 날짜인지 확인
+                const isToday =
+                  day === todayDate &&
+                  month === todayMonth &&
+                  year === todayYear;
+
+                // 오늘 이전 날짜인지 확인
+                if (
+                  year < todayYear ||
+                  (year === todayYear && month < todayMonth) ||
+                  (year === todayYear &&
+                    month === todayMonth &&
+                    day < todayDate)
+                ) {
+                  // 오늘 이전 날짜는 비활성화
+                  $cell.addClass("disabled");
+                } else {
+                  // 선택된 날짜인지 확인
+                  if (selectedDates.includes(dateString)) {
+                    $cell.addClass("selected");
+                  }
+
+                  // 오늘 날짜에 특별한 스타일 적용
+                  if (isToday) {
+                    $cell.addClass("today");
+                  }
+
+                  // 클릭 이벤트 추가
+                  $cell.on("click", function () {
+                    if ($(this).hasClass("selected")) {
+                      $(this).removeClass("selected");
+                      selectedDates = selectedDates.filter(
+                        (d) => d !== dateString
+                      );
+                    } else {
+                      $(this).addClass("selected");
+                      selectedDates.push(dateString);
+                    }
+                    updateSelectedDatesList();
+                  });
+                }
+
+                $row.append($cell);
+              }
+              $calendarBody.append($row);
+            }
+          }
+
+          // 월 및 연도 선택 시 달력 갱신
+          $("#month-select, #year-select").on("change", function () {
+            const selectedMonth = parseInt($("#month-select").val());
+            const selectedYear = parseInt($("#year-select").val());
+            generateCalendar(selectedMonth, selectedYear);
+            disablePastMonthsAndYears();
+          });
+
+          // 초기 달력 생성 (현재 월과 연도)
+          const currentMonth = todayMonth; // 현재 월
+
+          $("#month-select").val(currentMonth);
+          generateCalendar(currentMonth, currentYear);
+          disablePastMonthsAndYears();
+
+          // 선택 초기화 버튼 기능
+          $("#reset-selection").on("click", function () {
+            selectedDates = [];
+            $("#calendar-body td.selected").removeClass("selected");
+            updateSelectedDatesList();
+          });
+
+          // 연도 및 월 선택 시 과거 월 비활성화 함수
+          function disablePastMonthsAndYears() {
+            const selectedYear = parseInt($("#year-select").val());
+
+            $("#month-select option").each(function () {
+              const optionMonth = parseInt($(this).val());
+              if (selectedYear === todayYear && optionMonth < todayMonth) {
+                $(this).attr("disabled", true);
+              } else {
+                $(this).removeAttr("disabled");
+              }
+            });
+
+            // 연도 선택 시 현재 연도 이전을 비활성화하려면 아래 주석 해제
+            /*
+            $("#year-select option").each(function () {
+              const optionYear = parseInt($(this).val());
+              if (optionYear < todayYear) {
+                $(this).attr("disabled", true);
+              } else {
+                $(this).removeAttr("disabled");
+              }
+            });
+            */
+          }
+        }
+        // 달력 함수 호출
+        calender();
+      });
+    </script>
+  </body>
+</html>
